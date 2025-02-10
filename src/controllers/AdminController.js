@@ -47,7 +47,8 @@ const updateAdminById = async (req, res) => {
   try {
     const admin = await Admin.findById(req.params.id);
     if (!admin) return res.status(404).json({ message: "Admin not found" });
-    admin.name = req.body.name || admin.name;
+    admin.username = req.body.username || admin.username;
+    admin.usersecondname = req.body.usersecondname || admin.usersecondname;
     admin.email = req.body.email || admin.email;
     admin.password = req.body.password || admin.password;
     const updatedAdmin = await admin.save();
